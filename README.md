@@ -1,4 +1,3 @@
-# node-project
 Windows 平台使用如下命令：
 ```
 set DEBUG=node-project & npm start         其中node-project为你的项目名称
