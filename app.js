@@ -10,7 +10,7 @@ app.set("view engine",'jade');
 app.set('views','./views/pages');
 
 //设置静态资源
-app.use("/static", express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 
 app.use("/",index);
