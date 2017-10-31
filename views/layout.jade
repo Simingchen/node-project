@@ -1,7 +1,9 @@
 doctype html
-html
+html 
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset="utf-8")
+    title #{title}
+    include ./includes/link.jade
   body
+    include ./includes/header.jade
     block content

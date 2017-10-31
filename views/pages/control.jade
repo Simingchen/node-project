@@ -1,0 +1,39 @@
+extends ../layout.jade
+block content
+    .container
+        .row
+            form.form-horizontal(method="post",action="/admin/movie/do")
+                //电影名字
+                .form-group
+                    label.col-sm-2.control-label(for="inputTitle") 电影名字：
+                    .col-sm-10
+                        input#inputTitle.form-control(type="text",name="movie[title]",value="#{movie.title}")
+                 //导演
+                .form-group
+                    label.col-sm-2.control-label(for="inputTitle") 导演：
+                    .col-sm-10
+                        input#inputDirector.form-control(type="text",name="movie[director]",value="#{movie.director}")
+                 //国家
+                .form-group
+                    label.col-sm-2.control-label(for="inputCountry") 国家：
+                    .col-sm-10
+                        input#inputCountry.col-sm-10.form-control(type="text",name="movie[country]",value="#{movie.country}")
+                 //语言
+                .form-group
+                    label.col-sm-2.control-label(for="inputLanguage") 语言：
+                    .col-sm-10
+                        input#inputLanguage.col-sm-10.form-control(type="text",name="movie[language]",value="#{movie.language}")
+                //上映年份
+                .form-group
+                    label.col-sm-2.control-label(for="inputYear") 上映年份：
+                    .col-sm-10
+                        input#inputYear.col-sm-10.form-control(type="text",name="movie[year]",value="#{movie.year}")
+                //简介
+                .form-group
+                    label.col-sm-2.control-label(for="inputSummary") 简介：
+                    .col-sm-10
+                        input#inputSummary.col-sm-10.form-control(type="text",name="movie[summary]",value="#{movie.summary}")
+                .form-group
+                    .col-sm-2
+                    .col-sm-10
+                        input.btn.btn-default(type="submit",name="submit")
