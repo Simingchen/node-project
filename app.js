@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// 路由中间件 middleware
+// 路由中间件 middleware电饭锅d
 // 当app.use没有提供path参数时，路径默认为“/”
 app.use('/', index);
 app.use('/users', users);
