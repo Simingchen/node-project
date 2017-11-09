@@ -1,9 +1,9 @@
 var express = require("express");
-var app=express();
+var app = express();
 var path = require('path');
-var index =require('./routes/index');
-var admin = require('./routes/admin');
-
+var index = require('./routes/index');      // 前台路由
+var admin = require('./routes/admin');      // 后台路由
+var apiList = require('./api-client');
 
 //设置模板引擎
 app.set("view engine",'jade');
@@ -12,9 +12,13 @@ app.set('views','./views/pages');
 //设置静态资源
 app.use("/static", express.static(path.join(__dirname, './public')));
 
+// 路由
+app.use("/", index);
+app.use("/admin", admin);
 
-app.use("/",index);
-app.use("/admin",admin);
+// 与客户端接口
+app.use("/", apiList);
+
 
 //数据库连接
 var mongoose =require("mongoose");
@@ -41,8 +45,9 @@ var movieSchema = mongoose.Schema({
 });
 
 var movie = mongoose.model("movie",movieSchema);
-movie({title: "不能说的秘密"}).save((err, data) => {
-    if (err) throw err;
-    console.log("写入数据库成功");
-    console.log(data);
-})
+// movie({title: "不能说的秘密"}).save((err, data) => {
+//     if (err) throw err;
+//     console.log("写入数据库成功");
+//     console.log(data);
+// })
+// 
