@@ -35,7 +35,6 @@ const apiList = {
     ShoppingCard: preUrl + "/GdsBase/ShoppingCard",  //购物车列表
     DeleteFromShoppingCar: preUrl + "/Ajax/DeleteFromShoppingCar",  //删除购物车项
     ShoppingCarChangeNum: preUrl + "/Ajax/ShoppingCarChangeNum",  //改变购物车数量
-    SimpRegister: preUrl + "/Home/SimpRegister",  //注册
     JifenDetail: preUrl + "/MyAccount/JifenDetail",  //积分列表
     UserInfo: preUrl + "/MyAccount/UserInfo",  //用户信息
     EditUserInfo: preUrl + "/MyAccount/EditUserInfo",  //编辑用户信息
@@ -52,8 +51,8 @@ const apiList = {
     GloGds: preUrl + "/GdsBase/GloGds",  //首页全球购
     EditUserPhone: preUrl + "/MyAccount/EditUserPhone",  //修改手机号
     
-
-    Autumn: preUrl + "/Activt/AutumnPackageList",  //中秋
+    // 新改接口
+    SimpRegister: preUrl + "/SimpRegister",  //注册
 }
 
 exports.data = apiList;

@@ -10,7 +10,6 @@ Vue.use(Vuex);
 const state = {
     userType: "",  //用户类型
     list: [],
-    isSupportWebp: false   // 是否支持webp图片 未使用
 };
 
 export default new Vuex.Store({

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// 测试请求
+// 测试请求  
 router.get('/test', function(req, res, next) {
     var data = {
         title: '网站首页',
@@ -29,5 +29,16 @@ router.get('/test', function(req, res, next) {
     }
     res.json(data);
 });
+
+// 注册
+router.post('/SimpRegister', function(req, res, next) {
+    var data = {
+        Result: 1,
+        Message: "注册成功"
+    }
+
+    res.json(data);
+});
+
 
 module.exports = router;
