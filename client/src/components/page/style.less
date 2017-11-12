@@ -1,0 +1,312 @@
+@import '../variables.less';
+
+// font size
+
+@baseWidth: 375px;
+@baseFont: 20px;
+
+// html {
+//     font-size: @baseFont;
+// }
+
+* {
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+body,button,input,textarea,select{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: #3d4145;
+}
+html,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p,form,input{
+    margin:0;padding:0;
+}
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+body,html {
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+body{
+    max-width: 640px;
+    margin:0 auto;
+    background-color:#f0f0f0;
+}
+
+a,button,textarea,input,label{
+    outline:0 none;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+a:focus,button:focus,input:focus,select:focus,textarea:focus{outline: 0}
+li{list-style:none;}
+img{max-width: 100%;vertical-align: top;border:0;}
+i{font-style:normal;}
+.rel{position:relative;}
+.abs{position:absolute;}
+.tac{text-align:center;}
+.tar{text-align:right;}
+.tal{text-align:left;}
+/* float */
+.fl{float:left;}
+.fr{float:right;}
+.dpn{display:none;}
+.dpb{display:block}
+.ofh{overflow:hidden}
+.clearfix {zoom: 1;}
+.clearfix:after{content: ".";display: block;height: 0; clear: both;visibility: hidden;}
+
+.fs12{
+    font-size: 12px;
+}
+.p10{
+    padding:0.5rem;
+}
+.mt10{
+    margin-top:10px;
+}
+.mb10{
+    margin-bottom:10px;
+}
+.bgf{
+    background-color:#fff;
+}
+.c58{
+    color:#ec584e;
+}
+.c9{
+    color:#999;
+}
+.bor-bottom:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    top: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #e7e7e7;
+    display: block;
+    z-index: 1;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.wp100{
+    width:100%;
+}
+.hp100{
+    height:100%;
+}
+.items-line{
+    position:relative;
+    padding:0.5rem;
+    background-color: #fff;
+    .link-arrow {
+        font-size: .7rem;
+        position: absolute;
+        right: .3rem;
+        top: 50%;
+        height: 1rem;
+        width: .8rem;
+        color: #c7c7c7;
+        margin-top: -0.5rem;
+    }
+}
+.toActive:active{
+    -webkit-transition: 0ms;
+    transition: 0ms;
+    background-color: #d9d9d9;
+}
+//flex
+.flex-box{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    .flex-item{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+    }
+}
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.footer{
+    max-width: 640px;
+    margin:0 auto;
+}
+
+// fix fastclick bug: https://github.com/ftlabs/fastclick/issues/60
+label > * {
+    pointer-events: none;
+}
+
+// rem
+// @bps: 400px, 414px, 480px; 
+
+// .loop(@i: 1) when (@i <= length(@bps)) {
+//     @bp: extract(@bps, @i);
+//     @font: @bp/@baseWidth*@baseFont;
+//     @media only screen and (min-width: @bp){
+//         html {
+//             font-size: @font !important;
+//         }
+//     }
+//     .loop((@i + 1));
+// };
+// .loop;
+
+
+// style
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
+
+.badge {
+    display: inline-block;
+    padding: .1rem .45rem .15rem;
+    font-size: .6rem;
+    line-height: 1;
+    color: #3d4145;
+    background-color: rgba(0, 0, 0, .15);
+    border-radius: 5rem;
+}
+img[lazy=loading],img[lazy=error] {
+    //加载圈动画
+    // background:url(https://img.alicdn.com/tps/TB1R5zYKVXXXXb7XVXXXXXXXXXX-32-32.gif) center center no-repeat;
+    background:url(../../assets/loading.png) center center no-repeat;
+    background-size: 30% 30%;
+}
+//去除底部条遮住内容
+.footer-box{
+    .hr28{
+        height:2.8rem;
+    }
+}
+
+//菜单面板
+.menu-panel{
+    .popover{
+        max-width: 8.75rem!important;
+        width: 7rem;
+        background-color:rgba(38,38,38,.8)!important;
+        border-radius:5px;
+        z-index: 5;
+        &:before{
+            content: "";
+            position: absolute;
+            top: -1rem;
+            right: 0.9rem;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent transparent rgba(0,0,0,0.7) transparent;
+            border-width: 0.5rem;
+        }
+        .iconfont{
+            font-size: 1.2rem;
+            vertical-align: middle;
+        }
+        a{  
+            display:block;
+            padding-left:0.4rem;
+            color:#c1c4c9;
+            text-align: left;
+            &.bor-bottom{
+                &:before{
+                    background-color:#777;
+                }
+            }
+        }
+        .item{
+            height:2.6rem;
+            padding:0;
+            line-height: 2.6rem;
+            &:last-child{
+                a:before{
+                    display:none;
+                }
+            }
+        }
+    }
+    .inner{
+        color:#fff;
+        background: none!important;
+    }
+    .angle{
+        display: none!important;
+    }
+}
+
+//空内容显示按钮与提示
+.empty{
+    padding-top:4.4rem;
+    text-align: center;
+    .txt{
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #666;
+    }
+    .subTxt{
+        margin-bottom:20px;
+        color:#999;
+    }
+    .btn{
+        display: block;
+        width:5.2rem;
+        height:1.8rem;
+        border: 1px solid #ec584e;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 1.8rem;
+        margin: 0 auto;
+        color: #ec584e;
+        font-size: 12px;
+        &:active{
+
+        }
+    }
+}
+
+// 报错提示小贴
+.notify {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    width: 220px;
+    padding: 0;
+    margin: 0 0 0 -110px;
+    z-index: 9999;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    line-height: 1.5em;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    .txt {
+        padding: 10px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+}

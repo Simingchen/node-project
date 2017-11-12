@@ -1,0 +1,39 @@
+@import '../variables.less';
+@import '../mixins.less';
+@import './variables.less';
+
+.nav ~ .page-content {
+    top: @nav-height;
+}
+.goodsList-page{ //商品列表错位修改
+    .page-content {
+        top: 1.5rem;
+    }
+}
+//
+// bars
+// --------------------------------------------------
+
+.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    max-width: 640px;
+    height: @nav-height;
+    padding-right: @bar-side-spacing;
+    padding-left: @bar-side-spacing;
+    margin:0 auto;
+    background-color: #f7f7f8;
+    .hairline(bottom, @border-default-color);
+    backface-visibility: hidden;
+}
+.fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 640px;
+    height: 2.2rem;
+    margin:0 auto;
+}

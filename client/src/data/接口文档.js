@@ -1,0 +1,78 @@
+
+//列表详情
+"Goodlist": [
+{
+      "Id": 8988,
+      "Planid": 100,
+      "Cid": 0,
+      "Hid": 1675,
+      "Gysid": 61,
+      "Gysjiancheng": "平易隆",
+      "Gysname": "深圳市平易隆健康科技有限公司",
+      "Isgys": false,
+      "Numbers": "",
+      "Cname": "台塑生医 多福美乐晶极润泽洗发精 450g ",
+      "Ename": "tssydfmljjrzxfj450g,taisushengyiduofumeilejingjirunzexifajing450g",
+      "Aliasname": "台塑生医 多福美乐晶极润泽洗发精 450g ",
+      "Aliasename": "tssydfmljjrzxfj450g,taisushengyiduofumeilejingjirunzexifajing450g",
+      "Stand": "瓶",
+      "Model": "PYLtssy009",
+      "Product": "台湾",
+      "Ysname": "型号",
+      "Ysname2": "规格",
+      "Mcid": 22000000,
+      "Mcname": "台塑生医",
+      "Tuiable": true,
+      "Attention": "",
+      "State": 2,
+      "Hits": 9,
+      "Hitstime": "/Date(1496393599000)/",
+      "Selectbyfescodate": "/Date(1494670935000)/",
+      "Img": "/Uploads/Picture/2017-05-12/f9c9e889818747a9822b75e4774bfb48.jpg",
+      "Imgs": "、/Uploads/Picture/2017-05-12/8c6676ffea5e45a5955e37c056c4f9e0.jpg、/Uploads/Picture/2017-05-12/d4d59b18ce824a8fa0fb12548f48ca1f.jpg、/Uploads/Picture/2017-05-12/9678d6eb9ebf4bfaaf1e49bac9eb8661.jpg",
+      "Ys1": 3426,
+      "Ys1name": "PYLtssy009",
+      "Ys2": 3695,
+      "Ys2name": "450g / 瓶",
+      "Price": 75,
+      "Basisprice": 88,
+      "Kucun": 99,
+      "Isdefault": false,
+      "IsSendByGys": true,
+      "Fentype": 1,
+      "Fentypename": "商城积分",
+      "Fenstans": "点",
+      "Spread": true,
+      "Fenable": true
+}
+]
+
+
+//地址列表
+{
+    "Result": 1,
+    "Shouaddrlist": [
+        {
+            "Id": 12,
+            "Fesid": 20,
+            "Shouman": "陈庆周",
+            "Cardid": "445381198704191739",
+            "CardidValue": "445381198704191739",
+            "Fname": "",
+            "Sex": "",
+            "Provid": 1,
+            "Prov": "北京市",
+            "Xianid": 2,
+            "Xian": "东城区",
+            "TownId": 3,
+            "Town": "东城区",
+            "Addr": "罗湖大道中001",
+            "Mobile": "15626229709",
+            "Tel": "",
+            "Postcode": "",
+            "Email": "",
+            "Bak": "",
+            "Isdefault": true,
+            "Addrtag": "",
+            "Addrtext": ""
+        },

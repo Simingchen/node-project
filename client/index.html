@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="Siming" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- 添加到桌面的标题与图标 -->
+    <meta name="apple-mobile-web-app-title" content="分享汇">
+    <link rel="apple-touch-icon-precomposed" href="http://m.fescomall.com/web.jpg">
+    <!-- Android 版 Chrome 在访问时状态栏颜色 -->
+    <meta name="theme-color" content="#f7f7f8">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <title>分享汇</title>
+    <script>
+        // 控制字根大小rem
+        function fontSize(){
+            var W = window.innerWidth;
+            var oHtml = document.getElementsByTagName("html")[0];
+            if(W > 640){
+                oHtml.style.fontSize="34px";
+                oHtml.style.background="#eae9ee";
+            }else{
+                oHtml.style.fontSize=W/18.75+"px";
+                oHtml.style.background="";
+            }
+        }
+        
+        fontSize();
+        window.onresize=function(){
+            fontSize();
+        }
+    </script>
+    <style>
+        #welcome-loading{
+            position:absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            max-width:640px;
+            padding-top:5rem;
+            margin:0 auto;
+            text-align:center;
+            line-height:2.5rem;
+            z-index:1000;
+            background-color:#f5f5f5
+        }
+        #welcome-loading .img{
+            display:block;
+            width:3.5rem;
+            height:3.5rem;
+            margin:0 auto;
+            border-radius:0.25rem
+        }
+        #welcome-loading .m-loading-icon{
+            display:inline-block;
+            width:1.2rem;
+            height:1.2rem;
+            background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAACXZwQWcAAAAyAAAAMgCxEE/eAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAHqSURBVFjD5ZjRTsIwFIb/LYxBpggaE5dwQTCagFfOG668JRG85A3At4D4EoT4tHo6mKGup127TUPkT0jTnOZj/U//seET9Qv/DcJ96oFEGJGi+iA+XrDFB2lLI78eyCIFZFrUAbnEToLsaMYNovkkEkLoEQUbgoO0cUtqayEJ2HozxMcz1ngnrWnkH9Z1c9vVBVtvhkzTBZmm379WYTxXb4JcYCMt2tAM28JcvQkylpYIjY72PsQ9KTyaUdbbQ8a6plPXmyCd3OV3oDs/BeoLGq9NAgfjC7SkbT13GJsYkJqmtC1WX/K+YREr5W5JZpxcEKJPCktBGtRdHfpWQjxK1SXeSEsaeU4QDzHF5hMpoZGXh0xSQKaJE6SfAjL1f0LOsJIgK5qxhTQPV5EpEd12DBlKCKGBNaQnIYS6JsiwAkhPhkS57YqsIUFuu4I/MP6XWnh/wTEpKHUYfZyTfP7EV5ZdilhRLApwTQoKQxRhok9hD3eY4ZU0o5FnhDBO6CEPKSDTgxHC9JQO0sZcgszF/0KXMNFBYgkhdKN1lg0TO0gM1mBdmOggrdx2tcAarAsTa+M5g12NV7YwZ7B7C+/3/orUMBmsCxOXJy2lwU5PWi53i2qffo0GVwExGlzVGwmtwafwbuUEXkV9AaQe+AMOMIBcAAAAAElFTkSuQmCC) no-repeat;
+            background-size:1.2rem 1.2rem;
+            vertical-align:middle;
+            -webkit-animation:loading 1.5s linear infinite;
+            animation:loading 1.5s linear infinite
+        }
+        #welcome-loading .m-loading-txt{
+            color:#666;
+            padding-left:0.25rem
+        }
+        @Html.Raw(@"
+            @-webkit-keyframes loading{
+                0%{
+                    -webkit-transform:rotate(0);
+                    transform:rotate(0)
+                }
+                25%{
+                    -webkit-transform:rotate(90deg);
+                    transform:rotate(90deg)
+                }
+                50%{
+                    -webkit-transform:rotate(180deg);
+                    transform:rotate(180deg)
+                }
+                75%{
+                    -webkit-transform:rotate(270deg);
+                    transform:rotate(270deg)
+                }
+                100%{
+                    -webkit-transform:rotate(360deg);
+                    transform:rotate(360deg)
+                }
+            }
+            @keyframes loading{
+                0%{
+                    -webkit-transform:rotate(0);
+                    transform:rotate(0)
+                }
+                25%{
+                    -webkit-transform:rotate(90deg);
+                    transform:rotate(90deg)
+                }
+                50%{
+                    -webkit-transform:rotate(180deg);
+                    transform:rotate(180deg)
+                }
+                75%{
+                    -webkit-transform:rotate(270deg);
+                    transform:rotate(270deg)
+                }
+                100%{
+                    -webkit-transform:rotate(360deg);
+                    transform:rotate(360deg)}
+                }
+        ")
+        /*样式隐藏广告*/
+        #_embed_v3_dc,iframes,iframe{
+            display:none!important;
+        }
+    </style>
+    <script>
+        var needClear = false,
+        timeout;
+        
+        if(window._pushshowjs_){
+            console.log("adHttp");
+            needClear = true;
+        }
+        window._pushshowjs_ = {};
+        Object.freeze(window._pushshowjs_);     //让对象只读, 防止属性被直接修改
+        Object.defineProperty(window, '_pushshowjs_', {
+            configurable: false,            //防止属性被重新定义
+            writable: false                 //防止属性被重新赋值
+        });
+        if(needClear){
+            timeout = setInterval(function(){
+                if(document.querySelectorAll("#_embed_v3_dc").length > 0){
+                    document.querySelectorAll("#_embed_v3_dc").remove();
+                    console.log("http清除");
+                    needClear = false;
+                    clearInterval(timeout);
+                }
+            }, 500);
+            window.onload = function () {
+                if(needClear){
+                    setTimeout(function(){
+                        clearInterval(timeout);
+                    }, 2e3);
+                }
+            };
+        }
+    </script>
+</head>
+<body ontouchstart="">
+    <div id="welcome-loading">
+        <img class="img" src="http://m.fescomall.com/web.jpg" width="50" height="50">
+        <span class="m-loading-icon"></span>
+        <span class="m-loading-txt">数据加载中</span>
+    </div>
+    <div id="app">
+        <!-- slide -->
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <script async src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <!-- built files will be auto injected -->
+    <noscript>
+        当前页面显示需要javaScript才能正常显示，请查看您的浏览器是否关闭了javaScript引擎(Your browser does not support javaScript!)
+    </noscript>
+</body>
+</html>

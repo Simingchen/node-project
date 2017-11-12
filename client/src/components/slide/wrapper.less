@@ -1,0 +1,45 @@
+@import '../variables.less';
+
+.slide-wrap {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.slide-inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.transition .slide-inner {
+    -webkit-transition: transform .3s;
+    transition: transform .3s;
+}
+
+.bullets {
+    position: absolute;
+    left: 0;
+    bottom: .3rem;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(0,0,0,.6);
+    margin: 0 4px;
+    opacity: .6;
+
+    &.active {
+        background-color: @color-primary;
+        opacity: .9;
+    }
+}
