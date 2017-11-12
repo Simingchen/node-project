@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var mongooseModel = require("./mongoose.js");
 // 测试请求  
 router.get('/test', function(req, res, next) {
     var data = {
@@ -32,13 +32,33 @@ router.get('/test', function(req, res, next) {
 
 // 注册
 router.post('/SimpRegister', function(req, res, next) {
+    var reqData = req.body;
+
+    if (reqData.phone) {
+        var phoneReg = /^1\d{10}$/;
+        if (!phoneReg.test(reqData.phone)) {
+            data.Result = -1;
+            data.Message = "手机号格式错误！"
+            // 弹窗
+            res.json(data);
+            return false;
+        }
+    }
+    if (!reqData.password) {
+        data.Result = -1;
+        data.Message = "请输入密码！"
+        // 弹窗
+        res.json(data);
+        return false;
+    }
+    
     var data = {
         Result: 1,
         Message: "注册成功"
     }
-
     res.json(data);
+    // 保存用户信息
+    mongooseModel.UserModel(reqData.phone, reqData.password)
 });
-
 
 module.exports = router;

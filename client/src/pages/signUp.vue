@@ -119,65 +119,6 @@
                     this.isCheck = false;
                 });
             },
-            // 获取验证码
-            getVerifyCode: function() { 
-                // 清除字符两边空格
-                var user = this.user.toString().trim();
-                if (!user) {
-                    this.errorMsg = "请先输入手机号！"
-                    // 弹窗
-                    this.$refs.alert.open();
-                    return false;
-                }
-                var phoneReg = /^1\d{10}$/;
-                if (!phoneReg.test(user)) {
-                    this.errorMsg = "手机号格式错误！"
-                    // 弹窗
-                    this.$refs.alert.open();
-                    return false;
-                }
-
-                var oBtn = this.$el.querySelector("#verify-btn");
-                oBtn.setAttribute("disabled", "disabled");
-                if (user) {
-                    var url = apiList.data.GetSMSCode;
-                    this.$http.post(url, {
-                        phone: this.user,
-                        smstpcode: 5         // 5为注册验证
-                    }).then(function (data) {
-                        var oData = data.body;
-                        if (oData.Result) {
-                            var times = 60;
-                            setTime(times);
-                            
-                            // 验证码定时器
-                            function setTime () {
-                                if (times > 0) {
-                                    oBtn.className = "disable";
-                                    oBtn.value = times + "秒后重新获取";
-                                    times--;
-                                    setTimeout(function() { 
-                                        setTime();
-                                    }, 1000);
-                                } else {
-                                    oBtn.className = "";
-                                    oBtn.value = "获取短信验证码";
-                                    oBtn.removeAttribute("disabled");
-                                }
-                            }
-                        } else {
-                            this.errorMsg = oData.Error;
-                            // 弹窗
-                            this.$refs.alert.open();
-                            oBtn.removeAttribute("disabled");
-                            return false;
-                        }
-                    }, function (data) {
-                        //  响应错误回调
-                        this.isCheck = false;
-                    });
-                }
-            },
             // 显示密码
             showPassword: function (type) {
                 var oType = this.$el.querySelector("#signupPassword");

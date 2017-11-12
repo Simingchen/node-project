@@ -4,10 +4,8 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    // index: path.resolve(__dirname, '../dist/index.html'),
-    // assetsRoot: path.resolve("__dirname, '../dist'"),
-    index: path.resolve("F:/fescomall/Fesco.UI/Fesco.Wechat/Views/Home/Index.cshtml"),    //改变打包目录到项目路径   
-    assetsRoot: path.resolve("F:/fescomall/Fesco.UI/Fesco.Wechat"),    //改变打包目录到项目路径
+    index: path.resolve(__dirname, '../dist/index.html'),
+    assetsRoot: path.resolve("__dirname, '../dist'"),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: false,   //修改为false变为不打包.map文件
