@@ -1,37 +1,25 @@
 <template>
-    <div class="page login-page">
-        <!-- <simple-header title="账户登录" ></simple-header> -->
-        <div class="top-img tac">
-            <h1>您的福利专注平台</h1>
-            <p class="subTit">Welfare Platform</p>
-        </div>
+     <div class="page login-page">
+        <simple-header title="账户登录" ></simple-header>
         <form class="login-form">
-            <div class="input-row">
-                <label class="label" for="loginUserName">
-                    <img src="../assets/login/tag1.png" alt="账户">
-                </label>
+            <div class="input-row has_line">
+                <label class="label" for="loginUserName">账户</label>
                 <input type="text" placeholder="请输入邮箱/手机" id="loginUserName" autocapitalize="off" name="loginUserName" v-model.trim="user">
             </div>
             <div class="input-row">
-                <label class="label" for="loginPassword">
-                    <img class="tag-img2" src="../assets/login/tag2.png" alt="账户">
-                </label>
-                <input type="password" placeholder="请输入密码" id="loginPassword" autocapitalize="off" name="loginPassword" v-model.trim="password" @keyup.enter="login()">
-                <span class="iconfont icon-browse_fill" @click="showPassword(inputType)"></span>
+                <label class="label" for="loginPassword">登录密码</label>
+                <input type="password" placeholder="请输入密码" id="loginPassword" autocapitalize="off" name="loginPassword" v-model.trim="password">
+                <span class="iconfont icon-browse_fill" v-on:click="showPassword(inputType)"></span>
             </div>
             <button type="button" class="login_btn" id="loginUser" :disabled="isCheck" @click="login()">登录</button>
             <div class="p10 clearfix">
-                <router-link class="fl link" to="/signup">
+                <router-link class="fl link" to="/signUp">
                     邀请码注册
                 </router-link>
                 <router-link class="fr link" to="/forget">
                     忘记密码?
                 </router-link>
             </div>
-            <p class="p10 yellow">
-                <i class="iconfont icon-cuowutishi"></i>
-                依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！
-            </p>
         </form>
         <alert :title="errorTit" :content="errorMsg" ref="alert"></alert>
     </div>
@@ -59,12 +47,10 @@
         },
         mounted () {
             this.$nextTick(function () {
-                this.setCookieUser();
-                
                 // 设置标题
                 this.setTitle("用户登录");
 
-                this.setBg();
+                this.setCookieUser();
             });
         },
         methods: {
@@ -182,38 +168,25 @@
                 } else {
                     return ""
                 }
-            },
-            // setBg设置背景高度
-            setBg: function () {
-                let windowH = window.innerHeight;
-                let oForm = this.$el.querySelector(".login-form");
-                let oTop = this.$el.querySelector(".top-img");
-                oForm.style.height = windowH - oTop.offsetHeight + "px"; 
             }
         }
     }
 </script>
 <style lang="less">
     .login-page{
-        .top-img{
-            height:11.3rem;
-            padding-top:8.5rem;
-            color:#e50405;
-            background: #e6e6e6 url("../assets/login/login2.png") center 0.5rem no-repeat;
-            background-size:100% 7.65rem;
-            h1{
-                font-size: 0.9rem;
-                line-height: 1.3rem;
-            }
-            .subTit{
-                color:#d0251d;
-            }
-        }
         .login-form{
-            min-height: 300px;
-            padding:1.5rem 1.0rem 0;
-            background: #c654c6 url("../assets/login/login1.jpg") center 0 no-repeat;
-            background-size:cover;
+            margin-top:3.2rem;
+        }
+        .head {
+            width: 100%;
+            height: 3.87rem;
+            margin-bottom: 1.524rem;
+            line-height: 3.87rem;
+            border-bottom: 1px solid #c8c8c8;
+            color: #000;
+            text-align: center;
+            font-size: 1.463rem;
+            background-color: #f7f7f8;
         }
         .input-row{
             display: -webkit-box;
@@ -221,18 +194,14 @@
             display: flex;
             -webkit-box-align: center;
             -webkit-align-items: center;
+            border-bottom: 1px solid #ddd;
             padding: .75rem 0.853rem;
-            margin-bottom: 1.0rem;
-            background-color: rgba(0,0,0,.2);
-            border-radius: 0.4rem;
+            color: #6c6c6c;
+            background-color: #fff;
+            text-align: left;
             .label{
-                width:2.25rem;
-            }
-            img{
-                height:1.2rem;
-            }
-            .tag-img2{
-                margin-left: 0.25rem;
+                width:4rem;
+                font-size: .875rem;
             }
             input{
                 -webkit-appearance: none;
@@ -240,7 +209,6 @@
                 padding: 0;
                 border: 0;
                 font-size: .875rem;
-                color: #fff;
                 background-color: transparent;
                 display: block;
                 -webkit-box-flex: 1;
@@ -250,29 +218,28 @@
         }
         .login_btn {
             display: block;
-            width: 100%;
+            width: 95%;
             height: 2.5rem;
+            margin: 1.585rem auto 0;
             line-height: 2.5rem;
-            border: 1px solid #8a4cdf;
+            border: 1px solid #c40000;
             border-radius: 5px;
             color: #fff;
-            background-color: #8a4cdf;
+            background-color: #c40000;
             text-align: center;
             font-size: .875rem;
-            &.disabled{
-                background-color: #7f39de;
-            }
+            
         }
         .link{
-            color: #fff;
+            color: #c40000;
             font-size: .875rem; 
         }
         .icon-browse_fill{
             font-size: 20px;
             color:#999;
         }
-        .yellow{
-            color:#ffa258;
+        .sign-btn{
+
         }
     }
 </style>

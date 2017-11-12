@@ -53,6 +53,7 @@ const apiList = {
     
     // 新改接口
     SimpRegister: preUrl + "/SimpRegister",  //注册
+    Login: preUrl + "/Login",  //登录
 }
 
 exports.data = apiList;

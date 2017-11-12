@@ -20,13 +20,53 @@ const mongooseModel = {
            username: userVal,
            password: passVal
         }
-        console.log(data)
         // 数据库写入
         user(data).save((err, data) => {
             if (err) throw err;
             console.log("写入数据库成功");
             console.info(data);
         })
+    },
+    userFind: function (userVal, passVal, res) {
+        // userSchema层
+        const userSchema = mongoose.Schema({
+            username: String,
+            password: String,
+        })
+        var user = mongoose.model("user", userSchema);
+
+        let data = {
+           username: userVal,
+           password: passVal
+        }
+
+        user.findOne({ username: userVal }, (err, data) => {
+            if (err) throw err;
+            
+            console.info("查找结果" + data);
+            // 查找为空时
+            if (!data) {
+                res.json({
+                    Result: -1,
+                    Message: "用户不存在"
+                });
+            } else {
+                user.findOne({ password: passVal }, (err, data2) => {
+                    if (!data2) {
+                        res.json({
+                            Result: -1,
+                            Message: "密码不正确"
+                        });
+                    } else {
+                        res.json({
+                            Result: 1,
+                            Message: "登录成功"
+                        });
+                    }
+                })
+            }
+
+        });
     }
 }
 
