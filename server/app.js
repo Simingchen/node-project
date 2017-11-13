@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');      // 前台路由
 var admin = require('./routes/admin');      // 后台路由
 var apiList = require('./api-client');
+// 客户端post请求的数据用body-parser中间件进行处理
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //设置模板引擎
 app.set("view engine",'jade');
@@ -13,11 +16,7 @@ app.set('views','./views/pages');
 //设置静态资源
 app.use("/static", express.static(path.join(__dirname, './public')));
 
-// 客户端post请求的数据用body-parser中间件进行处理
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// 路由
+// 前后台页面路由
 app.use("/", index);
 app.use("/admin", admin);
 

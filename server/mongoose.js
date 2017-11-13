@@ -27,6 +27,7 @@ const mongooseModel = {
             console.info(data);
         })
     },
+    // 登录用户查找
     userFind: function (userVal, passVal, res) {
         // userSchema层
         const userSchema = mongoose.Schema({

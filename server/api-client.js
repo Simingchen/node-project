@@ -51,14 +51,54 @@ router.post('/SimpRegister', function(req, res, next) {
         res.json(data);
         return false;
     }
-    
+
     var data = {
         Result: 1,
         Message: "注册成功"
     }
     res.json(data);
     // 保存用户信息
-    mongooseModel.UserModel(reqData.phone, reqData.password)
+    mongooseModel.UserModel(reqData.phone, reqData.password);
 });
+
+// 登录
+router.post('/Login', function(req, res, next) {
+    var reqData = req.body;
+    // 初始返回数据
+    var data = {
+        Result: 1,
+        Message: "登录成功"
+    }
+
+    if (!reqData.username) {
+        data.Result = -1;
+        data.Message = "手机号格式错误！"
+        // 弹窗
+        res.json(data);
+        return false;
+    }
+    if (reqData.username) {
+        var phoneReg = /^1\d{10}$/;
+        if (!phoneReg.test(reqData.username)) {
+            data.Result = -1;
+            data.Message = "手机号格式错误！"
+            // 弹窗
+            res.json(data);
+            return false;
+        }
+    }
+    if (!reqData.password) {
+        data.Result = -1;
+        data.Message = "请输入密码！";
+        // 弹窗
+        res.json(data);
+        return false;
+    }
+    
+    // 查找用户信息
+    mongooseModel.userFind(reqData.username, reqData.password, res);
+    
+});
+
 
 module.exports = router;

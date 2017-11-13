@@ -5,13 +5,13 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <meta name="author" content="Siming" />
+    <meta name="author" content="Siming, 269765015@qq.com" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <!-- 添加到桌面的标题与图标 -->
-    <meta name="apple-mobile-web-app-title" content="分享汇">
+    <meta name="apple-mobile-web-app-title" content="测试">
     <link rel="apple-touch-icon-precomposed" href="http://m.fescomall.com/web.jpg">
     <!-- Android 版 Chrome 在访问时状态栏颜色 -->
     <meta name="theme-color" content="#f7f7f8">
@@ -27,23 +27,23 @@
     <meta name="browsermode" content="application">
     <!-- QQ应用模式 -->
     <meta name="x5-page-mode" content="app">
-    <title>分享汇</title>
+    <title>vue-mall</title>
     <script>
         // 控制字根大小rem
         function fontSize(){
             var W = window.innerWidth;
             var oHtml = document.getElementsByTagName("html")[0];
             if(W > 640){
-                oHtml.style.fontSize="34px";
-                oHtml.style.background="#eae9ee";
+                oHtml.style.fontSize = "34px";
+                oHtml.style.background = "#eae9ee";
             }else{
-                oHtml.style.fontSize=W/18.75+"px";
-                oHtml.style.background="";
+                oHtml.style.fontSize = W/18.75+"px";
+                oHtml.style.background = "";
             }
         }
         
         fontSize();
-        window.onresize=function(){
+        window.onresize = function () {
             fontSize();
         }
     </script>
@@ -83,51 +83,51 @@
             color:#666;
             padding-left:0.25rem
         }
-        @Html.Raw(@"
-            @-webkit-keyframes loading{
-                0%{
-                    -webkit-transform:rotate(0);
-                    transform:rotate(0)
-                }
-                25%{
-                    -webkit-transform:rotate(90deg);
-                    transform:rotate(90deg)
-                }
-                50%{
-                    -webkit-transform:rotate(180deg);
-                    transform:rotate(180deg)
-                }
-                75%{
-                    -webkit-transform:rotate(270deg);
-                    transform:rotate(270deg)
-                }
-                100%{
-                    -webkit-transform:rotate(360deg);
-                    transform:rotate(360deg)
-                }
+
+        @-webkit-keyframes loading{
+            0%{
+                -webkit-transform:rotate(0);
+                transform:rotate(0)
             }
-            @keyframes loading{
-                0%{
-                    -webkit-transform:rotate(0);
-                    transform:rotate(0)
-                }
-                25%{
-                    -webkit-transform:rotate(90deg);
-                    transform:rotate(90deg)
-                }
-                50%{
-                    -webkit-transform:rotate(180deg);
-                    transform:rotate(180deg)
-                }
-                75%{
-                    -webkit-transform:rotate(270deg);
-                    transform:rotate(270deg)
-                }
-                100%{
-                    -webkit-transform:rotate(360deg);
-                    transform:rotate(360deg)}
-                }
-        ")
+            25%{
+                -webkit-transform:rotate(90deg);
+                transform:rotate(90deg)
+            }
+            50%{
+                -webkit-transform:rotate(180deg);
+                transform:rotate(180deg)
+            }
+            75%{
+                -webkit-transform:rotate(270deg);
+                transform:rotate(270deg)
+            }
+            100%{
+                -webkit-transform:rotate(360deg);
+                transform:rotate(360deg)
+            }
+        }
+        @keyframes loading{
+            0%{
+                -webkit-transform:rotate(0);
+                transform:rotate(0)
+            }
+            25%{
+                -webkit-transform:rotate(90deg);
+                transform:rotate(90deg)
+            }
+            50%{
+                -webkit-transform:rotate(180deg);
+                transform:rotate(180deg)
+            }
+            75%{
+                -webkit-transform:rotate(270deg);
+                transform:rotate(270deg)
+            }
+            100%{
+                -webkit-transform:rotate(360deg);
+                transform:rotate(360deg)}
+            }
+        }
         /*样式隐藏广告*/
         #_embed_v3_dc,iframes,iframe{
             display:none!important;

@@ -350,9 +350,7 @@
                 }, 100)
 
                 // 设置标题
-                this.setTitle("分享汇");
-
-                this.getMsg()
+                this.setTitle("首页");
             });
         },
         computed: {
@@ -366,14 +364,6 @@
             }
         },
         methods: {
-            getMsg () {
-                var url = "/apiList/test";
-                this.$http.get(url).then(function (data) {
-                    console.log(data.body)
-                }, function (response) {
-                    console.info(response);
-                });
-            },
             getGoods: function () {
                 if (window.localStorage.floorList) {
                     var floorData = JSON.parse(window.localStorage.floorList);
