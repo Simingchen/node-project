@@ -2,11 +2,13 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueResource from 'vue-resource';
 import Vum from './vum.js'
-import store from './store'
 import router from './router'   // 路由
+import store from './store'
 import VueLazyload from 'vue-lazyload' // vue图片懒加载
+import Toast from "./plugin/toast.js"   // 贴士弹窗
 import apiList from "./apiList.js"  //api列表
 
+Vue.use(Toast);
 Vue.use(VueResource);
 Vue.use(Vum);
 Vue.use(VueLazyload, {  
@@ -28,6 +30,43 @@ Vue.use(VueLazyload, {
         }
     }
 })
+// 全局样式
+require("./components/page/page.less");
+require("./components/page/style.less");
+
+// 自定义过滤器和new Vue的顺序，一定要将自定义过滤器放到new Vue前面。
+// 全局过滤器 价格添加两位数
+Vue.filter('formatMoney', function(value, isLogin) {
+    if (!value && value != 0) return "";
+    if (!isLogin) {   // 未传值为普遍页面的状态，因此当前取反值
+        return parseFloat(value).toFixed(2);
+    } else {
+        var val = value.toString();
+        return val.replace(val.substring(0, 2), "??") + ".00";
+    }
+})
+// 日期过滤器
+Vue.filter('formatDate', function(value, isShowTime = true) {
+    // isShowTime 是否显示时间值
+    var value = String(value);
+    function formatDouble (formatVal) {
+        return formatVal = formatVal < 10 ? ("0" + formatVal) : formatVal;
+    }
+    String.prototype.ToString = function (timeVal) {
+        var dateTime = new Date(parseInt(this.substring(6, this.length - 2)));
+        timeVal = timeVal.replace("yyyy", dateTime.getFullYear());
+        timeVal = timeVal.replace("yy", formatDouble(dateTime.getFullYear().toString().substr(2)));
+        timeVal = timeVal.replace("MM", formatDouble(dateTime.getMonth() + 1));
+        timeVal = timeVal.replace("dd", formatDouble(dateTime.getDate()));
+        timeVal = timeVal.replace("hh", formatDouble(dateTime.getHours()));
+        timeVal = timeVal.replace("mm", formatDouble(dateTime.getMinutes()));
+        timeVal = timeVal.replace("ss", formatDouble(dateTime.getSeconds()));
+        timeVal = timeVal.replace("ms", dateTime.getMilliseconds())
+        return timeVal;
+    };
+    //调用
+    return isShowTime ? value.ToString("yyyy-MM-dd  hh:mm:ss") : value.ToString("yyyy-MM-dd ");
+})
 
 new Vue({
     router,
@@ -36,65 +75,36 @@ new Vue({
 
 Vum.router(router)
 
-FastClick.attach(document.body)
+FastClick.attach(document.body);
 
 
 //全局设置title
 Vue.prototype.setTitle = function (title) {
     document.title = title;
-    var oIframe = document.createElement('iframe');
-    oIframe.style.display = 'none';
-    oIframe.onload = function() {
-        setTimeout(function(){
-            oIframe.remove();
-        }, 10);
-    }
-    document.body.appendChild(oIframe);
-}
-
-//加载组件成功后清除loading样式
-document.querySelector("#welcome-loading").style.display = "none";
-
-//全局过滤器 价格添加两位数
-Vue.filter('formatMoney', function(value, isLogin) {
-    if (!value) return "";
-    if (!isLogin) {   // 未传值为普遍页面的状态，因此当前去反值
-        return value.toFixed(2);
-    } else {
-        var val = value.toString();
-        return val.replace(val.substring(0, 2), "??") + ".00";
-    }
-})
-//日期过滤器
-Vue.filter('formatDate', function(value, isShowTime = true) {
-    // isShowTime 是否显示时间值
-    //转换需要的方法
-    String.prototype.ToString = function (format) {
-        var dateTime = new Date(parseInt(this.substring(6, this.length - 2)));
-        format = format.replace("yyyy", dateTime.getFullYear());
-        format = format.replace("yy", dateTime.getFullYear().toString().substr(2));
-        format = format.replace("MM", dateTime.getMonth() + 1)
-        format = format.replace("dd", dateTime.getDate());
-        format = format.replace("hh", dateTime.getHours());
-        format = format.replace("mm", dateTime.getMinutes());
-        format = format.replace("ss", dateTime.getSeconds());
-        format = format.replace("ms", dateTime.getMilliseconds())
-        return format;
-    };
-    //调用
-    return isShowTime ? value.ToString("yyyy-MM-dd  hh:mm:ss") : value.ToString("yyyy-MM-dd ");
-})
-
-//微信账号授权
-Vue.prototype.getWeChat = function (path){
+    // 如果是微信浏览器
     var ua = window.navigator.userAgent.toLowerCase(); 
     if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        var oIframe = document.createElement('iframe');
+        oIframe.style.display = 'none';
+        oIframe.onload = function() {
+            setTimeout(function(){
+                oIframe.remove();
+            }, 10);
+        }
+        document.body.appendChild(oIframe);
+    }
+}
+
+// 微信账号授权
+Vue.prototype.getWeChat = function (path) {
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
         var url = apiList.data.Authorize;
-        this.$http.post(url,{
-            url:path
+        this.$http.post(url, {
+            url: path
         }).then(function(data){ 
             var oData = data.body;
-            if(oData){      //微信授权如果返回有数据连接再请求进行微信授权
+            if (oData) {      //微信授权如果返回有数据连接再请求进行微信授权
                 window.location.href = oData;
             }
         },function(response){
@@ -104,3 +114,7 @@ Vue.prototype.getWeChat = function (path){
     return false;
 }
 
+// 加载组件成功后清除loading样式
+setTimeout(() => {
+    document.querySelector("#welcome-loading").style.display = "none";
+}, 500);
