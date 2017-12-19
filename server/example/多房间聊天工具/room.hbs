@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>{{roomID}}</title>
+    <style>
+    *{padding:0;margin:0;}
+    #msglog,
+    #messageInput {
+        border: 1px solid #ccc;
+        width: 500px;
+        height: 350px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+    
+    #messageInput {
+        height: 80px;
+    }
+    
+    .message {
+        line-height: 22px;
+    }
+    
+    .message .user {
+        padding-right: 5px;
+        padding-left: 5px;
+        color: brown;
+    }
+    
+    .sysMsg {
+        color: #c1bfbf;
+        padding-right: 5px;
+        padding-left: 5px;
+        font-size: 12px;
+    }
+    
+    #users {
+        width: 490px;
+        padding: 0 5px 5px;
+    }
+    </style>
+    <style>
+        /*弹窗*/
+        .overlay{
+            position:absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            background-color: rgba(0,0,0,.3);
+            z-index: 10;
+        }
+        .dialog-con{
+            position:fixed;
+            left:50%;
+            top:50%;
+            width:500px;
+            min-height:250px;
+            -webkit-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+            background-color: #fff;
+            border-radius: 5px;
+            z-index: 20;
+        }
+        .dialog-con h3{
+            text-align: center;
+            line-height: 36px;
+            border-bottom:1px solid #999;
+            font-weight: 400;
+        }
+        .dialog-con .close-dialog{
+            position:absolute;
+            right:20px;
+            cursor:pointer;
+        }
+        .form-box{
+            width:250px;
+            margin: 60px auto;
+        }
+        .dialog-con .input-name{
+            width:250px;
+            padding:0 10px;
+            line-height: 30px;
+            border-radius: 3px;
+            border:1px solid #999;
+        }
+        .set-name{
+            display: block;
+            height:30px;
+            width:100px;
+            margin-top:20px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+            background-color: #ec584e;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 进入房间设置昵称 -->
+    <div class="nick-dialog">
+        <div class="overlay"></div>
+        <div class="dialog-con">
+            <h3>设置昵称<span class="close-dialog">关闭</span></h3>
+            <div class="form-box">
+                <input type="text" class="input-name" placeholder="请输入你的昵称">
+                <span class="set-name">确定</span>
+            </div>
+        </div>
+    </div>
+    <p>
+        昵称: <span id="userName"></span>
+    </p>
+    <p>
+        当前房间: {{roomID}}
+    </p>
+    <p>
+        当前在线人数: <span id="count">{{users.length}}</span>
+    </p>
+    <p>
+        在线用户:
+        <span id="users">{{users}}</span>
+    </p>
+
+    <div id="msglog"></div>
+    <textarea name="message" id="messageInput"></textarea>
+    <br/> 按Enter键发送
+    <button id="joinOrLeave">退出房间</button>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+    // 弹窗
+    $(function () {
+        let $dialog = $(".nick-dialog");
+        let $btn = $(".set-name");
+        let $name = $(".input-name");
+        $(".close-dialog, .overlay").click(() => {
+            $dialog.hide();
+        });
+
+        $btn.click(() => {
+            if (!$name.val().trim()) {
+                alert("请输入你的昵称");
+                return false;
+            }
+
+            // 关闭弹窗
+            $dialog.hide();
+
+            var userName = $name.val();
+            $("#userName").html(userName);
+            buildConnection(userName); 
+        })
+    })
+
+    function buildConnection(userName) {
+        // ---------创建连接-----------
+        var socket = io();
+
+        // 加入房间
+        socket.on('connect', function() {
+            socket.emit('join', userName);
+        });
+
+        // 监听消息
+        socket.on('msg', function(userName, msg) {
+            var message = '' +
+                '<div class="message">' +
+                '  <span class="user">' + userName + ': </span>' +
+                '  <span class="msg">' + msg + '</span>' +
+                '</div>';
+            $('#msglog').append(message);
+            // 滚动条保持最下方
+            $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
+        });
+
+        // 监听系统消息
+        socket.on('sys', function(sysMsg, users) {
+            var message = '<div class="sysMsg">' + sysMsg + '</div>';
+            $('#msglog').append(message);
+
+            $('#count').text(users.length);
+            $('#users').text(users);
+        });
+
+        // 发送消息
+        $('#messageInput').keydown(function(e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                var msg = $(this).val();
+                $(this).val('');
+
+                socket.send(msg);
+            }
+        });
+
+        // 退出房间
+        $('#joinOrLeave').click(function() {
+            if ($(this).text() === '退出房间') {
+                $(this).text('进入房间');
+                socket.emit('leave');
+                var msg = '你已经退出了房间,重新发言请点击"进入房间"';
+                $('#msglog').append('<div class="sysMsg">' + msg + '</div>');
+            } else {
+                $(this).text('退出房间');
+                socket.emit('join', userName);
+            }
+
+        });
+    };
+    </script>
+</body>
+
+</html>
