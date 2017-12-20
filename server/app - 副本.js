@@ -16,6 +16,18 @@ app.set('views', path.join(__dirname, 'views'));
 // “view engine”选项用来设置要使用的引擎
 app.set('view engine', 'jade');
 
+/*// 加载hbs模块
+var hbs = require('hbs');
+
+// 指定模板文件的后缀名为html
+app.set('view engine', 'html');
+
+// 运行hbs模块
+app.engine('html', hbs.__express);
+
+这样可以再新建模板文件index.html，定义后缀名为html的文件。
+*/
+
 // app.use这个是用来配置路径响应的
 // 一个请求过来, 被 .use 写好的各个函数依次处理
 // 注册路由  app.get("/")
