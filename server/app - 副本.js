@@ -10,11 +10,15 @@ var users = require('./routes/users');
 
 var app = express();
 
+// 静态资源管理  express.static中间件相当于想发送的所有静态文件创建了一个路由
+// 渲染文件并发送给客户端
+app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 // “views”选项用来设置模板文件所在目录
 app.set('views', path.join(__dirname, 'views'));
 // “view engine”选项用来设置要使用的引擎
 app.set('view engine', 'jade');
+app.set("view engine", "hbs");
 
 /*// 加载hbs模块
 var hbs = require('hbs');
@@ -45,8 +49,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// 静态资源管理
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 // 路由中间件 middleware
@@ -58,6 +61,8 @@ app.use('/users', users);
 // res.set 和 res.status 代替node的res.writeHead
 // res.type 代替方便设置响应头content-type,但node方法中res.writeHead依旧可以使用 
 app.use(function(req, res, next) {
+    res.status(404);
+    res.render("404");  // 用404模板
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
