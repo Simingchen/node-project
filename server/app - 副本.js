@@ -50,28 +50,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // 路由中间件 middleware
-// 当app.use没有提供path参数时，路径默认为“/”
+// 当app.use没有提供path参数时，路径默认为“/” ,默认忽略大小写和反斜杠，express默认状态码200，不用显式指定
 app.use('/', index);
-app.use('/users', users);
+app.use('/users', users);   
 
 // catch 404 and forward to error handler
+// res.set 和 res.status 代替node的res.writeHead
+// res.type 代替方便设置响应头content-type,但node方法中res.writeHead依旧可以使用 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+// 或者这种写法404
+app.get("*", function(request, response) {
+    response.end("404!");
 });
 
 // error handler
+// 没有路由匹配路径的处理器
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500); 
+    res.render('error');
 });
 
 module.exports = app;
-
-
