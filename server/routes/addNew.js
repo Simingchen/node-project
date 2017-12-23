@@ -68,7 +68,7 @@ module.exports = app => {
     })
 
     // 传递数据
-    app.get("/todo", urlencodedParser，(req, res) => {
+    app.get("/todo", urlencodedParser, (req, res) => {
         data.push(req.body);
     })
 }

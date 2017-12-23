@@ -4,7 +4,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>{{roomID}}</title>
+    <title>{{title}}</title>
     <style>
     *{padding:0;margin:0;}
     #msglog,
@@ -102,6 +102,23 @@
 </head>
 
 <body>
+    <ul> 
+        {{#each tours}} {{! I'm in a new block...and the context has changed }} 
+        <li> {{name}} - {{price}} {{#if ../currencies}} ({{../../currency.abbrev}}) {{/if}} </li> 
+        {{/each}} 
+    </ul> 
+    {{#unless currencies}} 
+        <p>All prices in {{currency.name}}.</p> 
+    {{/unless}} {{#if specialsUrl}} {{! I'm in a new block...but the context hasn't changed (sortof) }} 
+    <p>
+    Check out our <a href="{{specialsUrl}}">specials!</p> 
+    {{else}} 
+        <p>Please check back often for specials.</p> 
+    {{/if}} <p> 
+    {{#each currencies}} 
+        <a href="#" class="currency">{{.}}</a> 
+    {{else}} Unfortunately, we currently only accept {{currency.name}}. {{/each}}
+    </p>
     <!-- 进入房间设置昵称 -->
     <div class="nick-dialog">
         <div class="overlay"></div>
