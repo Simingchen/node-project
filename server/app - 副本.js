@@ -4,11 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var app = express();
 
+// 路由
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
 
 // 静态资源管理  express.static中间件相当于想发送的所有静态文件创建了一个路由
 // 渲染文件并发送给客户端
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 // “view engine”选项用来设置要使用的引擎
 app.set('view engine', 'jade');
-app.set("view engine", "hbs");
+app.set("view engine", "hbs");    // 同属handler模板文件
 
 /*// 加载hbs模块
 var hbs = require('hbs');
