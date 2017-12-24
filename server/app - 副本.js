@@ -13,6 +13,9 @@ var users = require('./routes/users');
 // 静态资源管理  express.static中间件相当于想发送的所有静态文件创建了一个路由
 // 渲染文件并发送给客户端
 app.use(express.static(path.join(__dirname, 'public')));
+// //设置静态资源 更换/static名下
+// app.use("/static", express.static(path.join(__dirname, './public')));
+
 // view engine setup
 // “views”选项用来设置模板文件所在目录
 app.set('views', path.join(__dirname, 'views'));
