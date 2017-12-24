@@ -6,7 +6,12 @@
     <title>{{title}}</title>
     <!-- 在app.js 模版继承+自定义扩展,对应每个自定义页面的 -->
     {{{block "stylesheets"}}}
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <style>
+        body{
+            background-color: skyblue;
+        }
+    </style>
 </head>
 <body>
     {{{body}}}
