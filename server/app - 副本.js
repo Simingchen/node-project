@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 // “view engine”选项用来设置要使用的引擎
 app.set('view engine', 'jade');
 app.set("view engine", "hbs");    // 同属handler模板文件
-
+//app.set("view cache", true);    // 模板缓存
 /*// 加载hbs模块
 var hbs = require('hbs');
 
@@ -65,13 +65,16 @@ hbs.registerHelper('extend', function(name, context) {
     block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
 });
 
-hbs.registerHelper('block', function(name) {
+hbs.registerHelper('block', function(name, context) {
+    var len = (blocks[name] || []).length;
     var val = (blocks[name] || []).join('\n');
 
     // clear the block
     blocks[name] = [];
-    return val;
+
+    return len ? val : context.fn(this);
 });
+
 
 
 
