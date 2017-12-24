@@ -30,7 +30,7 @@
 // app.listen(3000, function () {
 //     console.log("请访问http://localhost:3000");
 // });
-hbs = require('hbs')
+var hbs = require('hbs')
 var path = require("path")
 var express = require("express");
 var app = express();
@@ -57,20 +57,16 @@ hbs.registerHelper('block', function(name) {
     return val;
 });
 
-
-
-
 app.get("/", function (req, res) {
     // res.render("index", {
     //     title: "首页",
     //     h1: "这是首页"
     // })
-    res.render('pages/index', {title: 'hbs demo', author: 'chyingp'});
-    // res.json({
-    //     title: "这是主页",
-    //     name: "mickey",
-    //     age: 24
-    // })
+    res.render('pages/index', {
+        title: "这是主页",
+        name: "mickey",
+        age: 24
+    });
 })
 
 app.get("/about/:id.html", (req, res) => {
@@ -89,7 +85,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
     console.log(err.stack);
     res.status(500);
-    res.send(500);
+    res.send("500");
 })
 app.listen(3000,function () {
     console.log("请访问3000端口")

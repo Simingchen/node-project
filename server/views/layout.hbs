@@ -1,16 +1,16 @@
 <!-- hbs默认会到views下找layout.hbs这个模版，将这个模板作为基本骨架，来渲染返回的页面。 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>{{title}}</title>
-    <!-- 在app.js 模版继承+自定义扩展,对应每个自定义页面的{{#extend "stylesheets"}} {{#extend "scripts"}} -->
+    <!-- 在app.js 模版继承+自定义扩展,对应每个自定义页面的 -->
     {{{block "stylesheets"}}}
-    {{{block "scripts"}}}
-    <link rel="stylesheet" type="text/css" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
 <body>
-
-{{{body}}}
-dsf dfg
+    {{{body}}}
+    <!-- 可以自定义位置 -->
+    {{{block "scripts"}}}
 </body>
 </html>
