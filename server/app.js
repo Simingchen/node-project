@@ -30,11 +30,35 @@
 // app.listen(3000, function () {
 //     console.log("请访问http://localhost:3000");
 // });
-
+hbs = require('hbs')
+var path = require("path")
 var express = require("express");
 var app = express();
+app.use("/src", express.static(path.join(__dirname, "/public")))
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
+
+var blocks = {};
+
+hbs.registerHelper('extend', function(name, context) {
+    var block = blocks[name];
+    if (!block) {
+        block = blocks[name] = [];
+    }
+
+    block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
+});
+
+hbs.registerHelper('block', function(name) {
+    var val = (blocks[name] || []).join('\n');
+
+    // clear the block
+    blocks[name] = [];
+    return val;
+});
+
+
+
 
 app.get("/", function (req, res) {
     // res.render("index", {

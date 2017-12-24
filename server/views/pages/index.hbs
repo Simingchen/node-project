@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    {{#extend "stylesheets"}}
+    <link rel="stylesheet" href="/src/css/index.css"/>
+    {{/extend}}
+
+    let the magic begin
+
+    {{#extend "scripts"}}
+    <script>
+      document.write('foo bar!');
+    </script>
+    {{/extend}}
 </head>
 <body>
     <h1>{{h1}}</h1>

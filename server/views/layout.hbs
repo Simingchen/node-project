@@ -3,7 +3,10 @@
 <html>
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- 在app.js 模版继承+自定义扩展,对应每个自定义页面的{{#extend "stylesheets"}} {{#extend "scripts"}} -->
+    {{{block "stylesheets"}}}
+    {{{block "scripts"}}}
+    <link rel="stylesheet" type="text/css" href="/src/css/style.css">
 </head>
 <body>
 
