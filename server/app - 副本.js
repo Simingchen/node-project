@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');  // 运用req.cookies需要中间件解析后才能使用
+var cookieParser = require('cookie-parser');  // 运用中间间cookie-parser才能获取用req.cookie获取cookie
 var bodyParser = require('body-parser');
 var app = express();
 
