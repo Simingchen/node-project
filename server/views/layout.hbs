@@ -19,7 +19,8 @@
 </head>
 <body>
     {{!当前为注释，!开始}}
-    {{{body}}}
+    {{!body 为其他子模板渲染html的视图，相当于body:"<div>模板视图</div>"}}
+    {{{body}}}   
     <!-- 可以自定义位置 -->
     {{{block "scripts"}}}
 </body>
