@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-</head>
-<body>
-    <h1>{{h1}}</h1>
-</body>
-</html>
+{{#extend "stylesheets"}}
+<link rel="stylesheet" href="/src/css/index.css"/>
+{{/extend}}
+
+<!-- 不用头部head -->
+<h1>
+    {{h1}}
+</h1>
+<p>
+    详情页
+
+</p>
+{{#extend "scripts"}}
+<script>
+  console.log('foo bar!');
+</script>
+{{/extend}}
