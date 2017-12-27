@@ -12,8 +12,10 @@
 二，响应对象
 1，res.status(code)      // 设置http状态代码
 2，res.set(name, value)      // 设置响应头，通常不需要设置，res.set("content-type", "text/plain");
+2, res.type(value)       // 直接设置响应头信息   res.type("text/plain")
 2，res.cookie(name, value, [option])           // 设置或清除客户端cookie值
 3，res.redirect(status, url)                  // 重定向浏览器默认重定向代码302
 4，res.send(body), res.send(status, body)       // 向客户端发送响应及可选状态码
 5，res.json(json), res.json(status, json)        // 向客户端发送及可选状态码
 6，res.download(path, file, callback)            // 将响应报头content-disposition设为attachmentn,这样浏览器就会选择下载而不是展示内容
+7，res.render(view, [locals], callback)        // 使用模板引擎渲染视图  默认响应码为200

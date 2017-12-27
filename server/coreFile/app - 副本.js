@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');  // 运用中间间cookie-parser才能获取用req.cookie获取cookie
-var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');  // 运用中间件cookie-parser才能获取用req.cookie获取cookie
+var bodyParser = require('body-parser');    // 解析req.body
 var app = express();
 
 // 路由
