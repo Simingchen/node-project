@@ -1,0 +1,19 @@
+一，请求对象
+1，req.params[name]     // 数组，路由参数
+2，req.query     // 查询字符串参数
+3，req.route     // 当前路由信息
+4，req.cookies   // 包含从客户端传递过来的cookie值，需要中间件cookie-parser支持
+5，req.ip        // 客户端 ip
+6, req.path ，req.url     // 返回不含主机名协议的路径
+7，req.xhr       // 如果请求是ajax发起该属性为true
+8，req.protocol  // 请求协议http或https
+9，req.secure     // 一个简便属性，如果链接是安全的，将返回true,等同于req.protocol === "https"
+
+二，响应对象
+1，res.status(code)      // 设置http状态代码
+2，res.set(name, value)      // 设置响应头，通常不需要设置，res.set("content-type", "text/plain");
+2，res.cookie(name, value, [option])           // 设置或清除客户端cookie值
+3，res.redirect(status, url)                  // 重定向浏览器默认重定向代码302
+4，res.send(body), res.send(status, body)       // 向客户端发送响应及可选状态码
+5，res.json(json), res.json(status, json)        // 向客户端发送及可选状态码
+6，res.download(path, file, callback)            // 将响应报头content-disposition设为attachmentn,这样浏览器就会选择下载而不是展示内容
