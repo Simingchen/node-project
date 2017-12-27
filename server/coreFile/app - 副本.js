@@ -92,6 +92,13 @@ app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
+
+    // 使用404模板，不用layout布局，或者其他基础模板
+    // 或者指定其他模板布局 {layout: "others"} 指定others.hbs 模板
+    res.render("pages/404", {
+        layout: null
+        // layout: "others"
+    })
 });
 // 或者这种写法404
 app.get("*", function(request, response) {
