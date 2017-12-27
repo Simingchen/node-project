@@ -49,12 +49,15 @@ hbs.registerHelper('extend', function(name, context) {
     block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
 });
 
-hbs.registerHelper('block', function(name) {
+// 改动主要在这个方法
+hbs.registerHelper('block', function(name, context) {
+    var len = (blocks[name] || []).length;
     var val = (blocks[name] || []).join('\n');
 
     // clear the block
     blocks[name] = [];
-    return val;
+
+    return len ? val : context.fn(this);
 });
 
 app.get("/", function (req, res) {
@@ -69,11 +72,23 @@ app.get("/", function (req, res) {
     });
 })
 
-app.get("/about/:id.html", (req, res) => {
-    let id = req.params.id
-    res.render("about", {
+app.get("/about", (req, res) => {
+    let id = req.params.id;
+    var fortunes = [
+        '传说中除甲醛的那些方法，真正有效的只有这2种 传说中除甲醛的那些方法，真正有效的只有这2种',
+        '快播作者即将出狱！谈快播的技术有何可取之处 快播作者即将出狱！谈快播技术有何可取之处',
+        "PConline消费者报告：大数据带你看透空气净化器 PConline消费者报告：大数据带你看透空气净化器",
+        "蓝色版vivo X20给你带来全新的视觉体验 蓝色版vivo X20达人试玩 全新的视觉体验",
+        '10.5寸iPad Pro长测二:平板+键盘+笔>笔记本？ 10.5寸iPad Pro长测二:平板+键盘+笔>笔记本？',
+        "想做每个人的理财中心？支付宝新版发布 想做每个人的理财中心？支付宝新版发布",
+        "网络时代的矛伤害了谁 盾又应该谁来举起？ 网络时代的矛伤害了谁 盾又应该谁来举起？",
+        "耕升GTX 1070 Ti G魂极客版显卡评测：极客味满满 GTX 1070 Ti看多了，这么极客风的少有",
+        "2017年度横评抢先看！有关吃鸡一切答案，在这2017年双摄手机大横评佳能77D对比尼康D7500热门M.2 SSD硬盘横评魅蓝Note6能畅快地吃鸡？"
+    ]
+    var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)]
+    res.render("pages/about", {
         title: "这是详情页",
-        h1: id
+        h1: randomFortune
     })
 })
 
