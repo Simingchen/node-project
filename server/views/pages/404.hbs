@@ -1,17 +1,163 @@
-{{#extend "stylesheets"}}
-<link rel="stylesheet" href="/dist/css/index.css"/>
-{{/extend}}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>404错误</title>
+    <link rel="stylesheet" href="/dist/css/common.css">
+    <style>
+        .con{
+            width:850px;
+            margin:0 auto;
+            padding:20px;
+            margin-top:100px;
+        }
+        .btns{
+            width: 365px;
+            margin-top:160px;
+            margin-left: 130px;
+        }
+        .btn{
+            width:150px;
+            height:40px;
+            line-height: 40px;
+            color:#fff;
+            background-color: #ec584e;
+            text-align: center;
+            font-size: 16px;
+            border:0;
+            border-radius: 5px;
+            margin-right: 30px;
+        }
+        .btn:hover{
+            color:#fff;
+            text-decoration: underline;
+        }
+        .text{
+            margin-top:20px;
+            line-height: 40px;
+            font-size: 18px;
+        }
+        .clearfix:after{content: ".";display: block;height: 0; clear: both;visibility: hidden;}
+        body {
+            background-color: #ECECEC;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #3c3c3c;
+        }
+        .page404{
+            margin-top:90px;
+            margin-left:100px;
+        }
+        .page404 .f404{
+            text-align: center;
+            font-size: 150px;
+            font-weight: bold;
+            line-height: 100px;
+            letter-spacing: 5px;
+            color: #fff;
+            float:left;
+        }
 
-<!-- 不用头部head -->
-<h1>
-    {{h1}}
-</h1>
-<p>
-    详情页
+        .page404 .f404 span {
+            cursor: pointer;
+            text-shadow: 0px 0px 2px #686868,
+            0px 1px 1px #ddd,
+            0px 2px 1px #d6d6d6,
+            0px 3px 1px #ccc,
+            0px 4px 1px #c5c5c5,
+            0px 5px 1px #c1c1c1,
+            0px 6px 1px #bbb,
+            0px 7px 1px #777,
+            0px 8px 3px rgba(100, 100, 100, 0.4),
+            0px 9px 5px rgba(100, 100, 100, 0.1),
+            0px 10px 7px rgba(100, 100, 100, 0.15),
+            0px 11px 9px rgba(100, 100, 100, 0.2),
+            0px 12px 11px rgba(100, 100, 100, 0.25),
+            0px 13px 15px rgba(100, 100, 100, 0.3);
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
 
-</p>
-{{#extend "scripts"}}
-<script>
-  console.log('foo bar!');
-</script>
-{{/extend}}
+        .page404 .f404 span:hover {
+            text-shadow: 0px 0px 2px #686868,
+            0px 1px 1px #fff,
+            0px 2px 1px #fff,
+            0px 3px 1px #fff,
+            0px 4px 1px #fff,
+            0px 5px 1px #fff,
+            0px 6px 1px #fff,
+            0px 7px 1px #777,
+            0px 8px 3px #fff,
+            0px 9px 5px #fff,
+            0px 10px 7px #fff,
+            0px 11px 9px #fff,
+            0px 12px 11px #fff,
+            0px 13px 15px #fff;
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .page404 .f404-des{
+            text-align: center;
+            color: #666;
+            font-family: cursive;
+            font-size: 20px;
+            text-shadow: 0 1px 0 #fff;
+            letter-spacing: 1px;
+            line-height: 2em;
+        }
+        .img-tip{
+            float:left;
+            margin-top:-10px;
+            margin-left:30px;
+        }
+        .img-tip p{
+            font-size: 16px;
+        }
+        .tips-msg{
+            font-size: 20px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <p class="tips-msg">
+            抱歉，你访问的页面不存在或者已删除...
+        </p>
+        <div class="page404 clearfix">
+            <div class="f404">
+                <span>4</span><span>0</span><span>4</span>
+            </div>
+            <div class="img-tip">
+        
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAABpCAIAAAAsg4+1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjJGMTAwRURFMkIyODExRTc4Njk1ODdFQTc4REZBOEI4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjJGMTAwRURGMkIyODExRTc4Njk1ODdFQTc4REZBOEI4Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkVGMjBCRjEyQjI4MTFFNzg2OTU4N0VBNzhERkE4QjgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MkVGMjBCRjIyQjI4MTFFNzg2OTU4N0VBNzhERkE4QjgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz76IzFFAAAakklEQVR42uydeXBN9/vH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" alt="404">
+                <p>error 该页面不存在(´･ω･`)</p>
+            </div>
+        </div>
+            <div class="f404-des">
+                <br/>
+            </div>
+        <div class="btns clearfix">
+            <a class="btn fl" href="/">返回首页</a>
+            <span style="line-height: 40px;">
+                (<span id="timeBack">10 </span>   后将自动返回商城首页)
+            </span>
+        </div>
+    </div>
+    <script>
+        function $(selector){return document.querySelector(selector)}
+        
+        var seconds = 10;
+        var timer = setInterval(function(){
+            seconds --;
+            $("#timeBack").innerHTML = seconds;
+            if(seconds < 1){
+                location.href = "/"
+            }
+        },1e3)
+    </script>
+</body>
+</html>
