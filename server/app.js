@@ -30,10 +30,12 @@
 // app.listen(3000, function () {
 //     console.log("请访问http://localhost:3000");
 // });
+var cookieParser = require('cookie-parser')
 var hbs = require('hbs')
 var path = require("path")
 var express = require("express");
 var app = express();
+app.use(cookieParser())
 app.use("/src", express.static(path.join(__dirname, "/public")))
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
@@ -58,10 +60,6 @@ hbs.registerHelper('block', function(name) {
 });
 
 app.get("/", function (req, res) {
-    // res.render("index", {
-    //     title: "首页",
-    //     h1: "这是首页"
-    // })
     res.render('pages/index', {
         title: "这是主页",
         name: "mickey",
@@ -70,8 +68,13 @@ app.get("/", function (req, res) {
 })
 
 app.get("/about/:id.html", (req, res) => {
-    let id = req.params.id
-    res.render("about", {
+    let id = req.params.id;
+    var data = {
+        a:1,
+        b:2
+    }
+    res.json(req.cookies)
+    res.render("pages/about", {
         title: "这是详情页",
         h1: id
     })
