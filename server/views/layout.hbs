@@ -8,20 +8,30 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="Siming, 269765015@qq.com" />
+    <link rel="stylesheet" href="/dist/css/common.css">
     <!-- 在app.js 模版继承+自定义扩展,对应每个自定义页面的 -->
     {{{block "stylesheets"}}}
-    <link rel="stylesheet" href="/src/css/reset.css">
-    <style>
-        body{
-            background-color: skyblue;
-        }
-    </style>
 </head>
 <body>
+    <!-- 头部 -->
+    <header id="header">
+        <div class="wrap clearfix">
+            <a class="logo fl" href="/">
+                <img src="/dist/images/logo.jpg">
+            </a>
+            <nav class="nav-list clearfix">
+                <a class="on" href="/">首页</a>
+                <a href="/list">列表</a>
+            </nav>
+        </div>
+    </header>
     {{!当前为注释，!开始}}
     {{!body 为其他子模板渲染html的视图，相当于body:"<div>模板视图</div>"}}
     {{{body}}}   
     <!-- 可以自定义位置 -->
     {{{block "scripts"}}}
+    <footer>
+        
+    </footer>
 </body>
 </html>

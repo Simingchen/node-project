@@ -1,0 +1,11 @@
+/* 
+    页面样式入口有两个: common.scss + 页面样式
+    common.scss包含：重置样式，sass函数封装，主题色#dd2727，字体
+    以下为头部，副头部，页脚样式
+    author: Siming;
+ */
+@import "./lib/mixin-set.scss";
+@import "./lib/reset.scss";
+@import "./lib/iconfont.scss";
+
+
