@@ -1,10 +1,10 @@
-# 这是基于node中express框架的服务器 + vue前台客服端双并的一个应用
+# 这是基于node中express框架的服务器 + vue2.0前台客服端双并的一个应用
 
 ## server层
 express + mongooes + mlab(500M free database on netline)
 
 ## client层
-vue + vum (微信开源UI框架)
+vue + vum (微信开源UI框架)，pc由hbs渲染，移动端由apiList接口自定义
 
 ## Windows 平台使用如下命令：
 
