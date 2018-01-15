@@ -4,7 +4,7 @@
 // var bodyParser = require('body-parser');
 // var index = require('./routes/index');      // 前台路由
 // var admin = require('./routes/admin');      // 后台路由
-// var apiList = require('./api-client');
+var apiList = require('./api-client');
 // // 客户端post请求的数据用body-parser中间件进行处理
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,8 +38,10 @@ app.use("/dist", express.static(path.join(__dirname, "/public")))
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 
-var blocks = {};
+// 与客户端接口
+app.use("/", apiList);
 
+var blocks = {};
 hbs.registerHelper('extend', function(name, context) {
     var block = blocks[name];
     if (!block) {
@@ -125,8 +127,7 @@ app.use(function (req, res, next) {
         return arr.slice(0,num-1);
     }
     res.render("pages/404", {
-        title: "404",
-        h1: randomFortune
+        layout: null
     })
 })
 
