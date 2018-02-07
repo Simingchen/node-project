@@ -1,18 +1,17 @@
 <template>
-    <div>
-        <overlay :show="mutableShow" :click="close"></overlay>
-        <transition name="popup-modal">
-            <div v-show="mutableShow"
-            :class="'popup-modal ' + className + (full ? ' full' : '')">
+<div>
+    <overlay :show="mutableShow" :click="close"></overlay>
+    <transition name="popup-modal">
+        <div v-if="mutableShow" :class="'popup-modal ' + className + (full ? ' full' : '')">
             <page-header v-if="showTitleBar">
-            <header-title>{{title}}</header-title>
-            <header-link @click.native="close()">{{closeButtonText}}</header-link>
-        </page-header>
-        <div class="modal-content">
-            <slot></slot>
+                <header-title v-if="title">{{title}}</header-title>
+                <header-link @click.native="close()" v-if="closeButtonText">{{closeButtonText}}</header-link>
+            </page-header>
+            <div class="modal-content">
+                <slot></slot>
+            </div>
         </div>
-    </div>
-</transition>
+    </transition>
 </div>
 </template>
 

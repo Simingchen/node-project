@@ -4,7 +4,7 @@
         <div slot="content">
             {{content}}
             <p>
-                <input class="modal-input" type="password" autocapitalize="off" v-model="mutableInput" maxlength="12" />
+                <input class="modal-input" type="password" autocapitalize="off" v-focus v-model.trim="mutableInput" maxlength="12" />
             </p>
         </div>
         <div slot="buttons" class="modal-buttons">
@@ -79,6 +79,13 @@
                     this.onCancel()
                 }
                 this.close()
+            }
+        },
+        directives: {
+            focus: {
+                inserted: function (el) {
+                    el.focus();
+                }
             }
         }
     }

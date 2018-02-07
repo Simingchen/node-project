@@ -15,11 +15,9 @@
 // --------------------------------------------------
 
 .nav {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 10;
+    position: fixed;
+    top:0;
+    width:100%;
     max-width: 640px;
     height: @nav-height;
     padding-right: @bar-side-spacing;
@@ -27,13 +25,5 @@
     margin:0 auto;
     background-color: #f7f7f8;
     .hairline(bottom, @border-default-color);
-    backface-visibility: hidden;
-}
-.fixed{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    max-width: 640px;
-    height: 2.2rem;
-    margin:0 auto;
+    z-index: 10;
 }

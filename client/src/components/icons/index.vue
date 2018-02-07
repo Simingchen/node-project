@@ -15,4 +15,5 @@
 
 <style lang="less">
     @import 'icons.less';
+    @import 'iconfont.less';
 </style>

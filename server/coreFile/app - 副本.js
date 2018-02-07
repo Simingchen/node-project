@@ -6,6 +6,12 @@ var cookieParser = require('cookie-parser');  // 运用中间件cookie-parser才
 var bodyParser = require('body-parser');    // 解析req.body
 var app = express();
 
+//如果你后端用的是Express.js框架来提供Web服务，那么可以使用压缩中间件进行gzip压缩．
+var compression = require('compression');
+app.use(compression());
+
+
+
 // 路由
 var index = require('./routes/index');
 var users = require('./routes/users');

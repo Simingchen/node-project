@@ -28,11 +28,11 @@
             },
             okText: {
                 type: String,
-                default: 'OK'
+                default: '确定'
             },
             cancelText: {
                 type: String,
-                default: 'Cancel'
+                default: '取消'
             },
             onOk: {
                 type: Function

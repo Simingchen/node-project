@@ -1,15 +1,11 @@
 <template>
     <footer class="footer footer-icons">
-        <router-link class="footer-item iconfont icon-31shouye" to="/Home" :class="{active : curPage == '/home' || curPage == '/'}">
-            首页
+        <router-link class="footer-item iconfont icon-31shouye" to="/netShop" :class="{active : curPage == '/netshop'}">
+            严选首页
         </router-link>
-        <router-link class="footer-item iconfont icon-fenlei2" to="/navSort" :class="{active : curPage == '/navsort'}">
-            分类
+        <router-link class="footer-item iconfont icon-fenlei2" to="/netShop/netSort" :class="{active : curPage == '/netshop/netsort'}">
+            严选分类
         </router-link>
-        <a class="footer-item iconfont icon-message_light" :href="$store.state.webMsg.QQLink">
-        <!-- <a target="_blank" href="http://api.pop800.com/chat/313245"><spanmg border="0" src="http://wpa.qq.com/pa?p=2:2041306314:52" alt="点击这里给我发消息" title="点击这里给我发消息"/> -->
-            消息
-        </a>
         <router-link class="footer-item iconfont icon-31gouwuche" to="/shopCart" :class="{active : curPage == '/shopcart'}">
             购物车
         </router-link>

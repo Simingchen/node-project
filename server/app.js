@@ -36,7 +36,7 @@ var path = require("path")
 var express = require("express");
 var app = express();
 app.use(cookieParser())
-app.use("/src", express.static(path.join(__dirname, "/public")))
+app.use("/dist", express.static(path.join(__dirname, "/public")))
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 
@@ -86,7 +86,10 @@ app.get("/about/:id.html", (req, res) => {
 
 app.use(function (req, res, next) {
     res.status(404)
-    res.send("404")
+    res.render("pages/404", {
+        title: "这是详情页",
+        layout: null
+    })
 })
 
 app.use(function (err, req, res, next) {

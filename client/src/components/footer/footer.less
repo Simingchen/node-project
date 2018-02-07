@@ -4,107 +4,97 @@
 @footer-height: 2.8rem;
 
 // footer bar margin
-.footer ~ .page-content {
+.footer~.page-content {
     bottom: @footer-height;
 }
+
 // bar docked to bottom and used for primary app navigation
 .footer {
     position: fixed;
-    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     bottom: 0;
     width: 100%;
+    max-width: 640px;
     height: @footer-height;
-    padding: 0;
-    .hairline(top, @border-default-color);
+    margin:0 auto;
+    .hairline(top, #b3b3b3);
     .hairline-remove(bottom);
-    z-index: 5;//less than popup
+    z-index: 5; //less than popup
+    -webkit-transition-duration: 400ms;
     transition-duration: 400ms;
-    background-color: #f7f7f8;
-
-// navigational tab (nested to be more specific for the icons in tab-items)
-.footer-item {
-    position: relative;
-    height: @footer-height;
-    color: #777;
-    text-align: center;
-    width: 100%;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    -webkit-flex-direction: column;
-    -webkit-align-items: center;
-    -webkit-justify-content: center;
-
-// active states for the tab bar
-&.active,
-&:active {
-    color: @color-primary;
+    background-color: #f7f7f8; // navigational tab (nested to be more specific for the icons in tab-items)
+    .footer-item {
+        position: relative;
+        height: @footer-height;
+        text-align: center;
+        -webkit-flex: 1;
+        flex: 1; 
+        // display: -webkit-box;
+        // display: -webkit-flex;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        // -webkit-flex-direction: column;
+        // -webkit-align-items: center;
+        // -webkit-justify-content: center;
+        // active states for the tab bar
+        &.active,
+        &:active {
+            color: @color-primary;
+            // .iconfont,
+            // .txt {
+            //     color: @color-primary;
+            // }
+        } 
+        // activity badge on an icon   未使用badge在底部
+        // .badge {
+        //     position: absolute;
+        //     top: .1rem;
+        //     left: 50%;
+        //     z-index: 100;
+        //     height: .9rem;
+        //     min-width: .9rem;
+        //     padding: 0 .2rem;
+        //     font-size: .6rem;
+        //     line-height: .9rem;
+        //     color: white;
+        //     vertical-align: top;
+        //     background: red;
+        //     border-radius: .5rem;
+        //     margin-left: .1rem;
+        // } 
+        // tab icon     未使用其他icon在底部
+        // .icon {
+        //     top: .1rem;
+        //     width: 1.3rem;
+        //     height: 1.3rem;
+        //     font-size: 1.3rem;
+        //     line-height: 1.3rem;
+        //     padding-top: 0;
+        //     padding-bottom: 0;
+        //     display: inline-block;
+        //     vertical-align: middle; // make the text smaller if it's used with an icon '
+        //     ~label {
+        //         display: block;
+        //         font-size: 0.65rem;
+        //         position: relative;
+        //         top: 0.15rem;
+        //     }
+        // }
+    }
 }
 
-// activity badge on an icon
-.badge {
-    position: absolute;
-    top: .1rem;
-    left: 50%;
-    z-index: 100;
-    height: .9rem;
-    min-width: .9rem;
-    padding: 0 .2rem;
-    font-size: .6rem;
-    line-height: .9rem;
-    color: white;
-    vertical-align: top;
-    background: red;
-    border-radius: .5rem;
-    margin-left: .1rem;
-}
-
-// tab icon
-.icon {
-    top: .1rem;
-    width: 1.3rem;
-    height: 1.3rem;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
-    padding-top: 0;
-    padding-bottom: 0;
-    display: inline-block;
-    vertical-align: middle;
-
-// make the text smaller if it's used with an icon '
-~ label {
-    display: block;
-    font-size: 0.65rem;
-    position: relative;
-    top: 0.15rem;
-}
-}
-}
-}
-
-.footer .icon {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-}
+// .footer .icon {
+//     font-size: 1.2rem;
+//     line-height: 1.2rem;
+// }
 
 // bars for search forms
 // --------------------------------------------------
-
 // position/size search bar within the bar
-.bar input[type="search"] {
-    height: 1.45rem;
-    margin: 0.3rem 0;
-}
-.footer{
-    &:before{
-        background-color:#b3b3b3;
-    }
-}
+// .bar input[type="search"] {
+//     height: 1.45rem;
+//     margin: 0.3rem 0;
+// }

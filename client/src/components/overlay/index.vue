@@ -1,6 +1,6 @@
 <template>
     <transition name="overlay">
-        <div :class="'overlay ' + (transparent ? 'transparent' : '')"v-if="show" @click="click && click()">
+        <div :class="'overlay ' + (transparent ? 'transparent' : '')" v-if="show" @click="click && click()" @touchmove.stop.prevent>
             <div class="inner" v-bind:style="{ opacity: opacity }"></div>
         </div>
     </transition>
