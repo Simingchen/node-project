@@ -1,0 +1,74 @@
+
+.validator {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    >input {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        border: none;
+    }
+    .v{
+        &-clear,
+        &-error,
+        &-warn,
+        &-password,
+        &-success {
+            &:after {
+                // font-family: @iconfont-inlay;
+            }
+        }
+        
+        &-clear {
+            height: 100%;
+            line-height: 100%;
+            padding-right: .15rem;
+            padding-left: .2rem;
+        }
+
+        &-clear {
+            &:after {
+                content: '\e624';
+                color: #B2B2B2;
+                font-size: .8rem;
+            }
+        }
+        &-error {
+            &:after {
+                content: '\e632';
+                color: #F43530;
+                font-size: 1rem;
+            }
+        }
+
+        &-warn {
+            &:after {
+                content: '\e632';
+                color: #10AEFF;
+                font-size: 1rem;
+            }
+        }
+
+        &-success {
+            &:after {
+                content: '\e63b';
+                color: #09BB07;
+                font-size: 1rem;
+            }
+        }
+
+        &-password {
+            &:after {
+                content: '\e623';
+                color: #B2B2B2;
+                font-size: 1rem;
+            }
+            &-open:after {
+                content: '\e621';
+                color: #434343;
+            }
+        }
+    }
+}
