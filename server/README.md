@@ -9,20 +9,22 @@ nodemon npm start 自动监听修改并启动服务器
 
 # Express 应用生成器安装自建express项目
 
-1，通过如下命令安装：
-$ npm install express-generator -g
+1，安装express生成器：
+```
+npm install express-generator -g
+```
 
-2，一个命名为 myapp 的应用。
-$ express myapp
+2，创建一个命名为 myapp 的应用。
+```
+express myapp
+```
 
 3，然后安装所有依赖包：
-$ cd myapp 
-$ npm install
-
-4，启动这个应用（MacOS 或 Linux 平台）：
-$ DEBUG=myapp npm start
-
-5，Windows 平台使用如下命令：
+```
+cd myapp 
+npm install
+```
+4, 启动：
 npm start
 
 
