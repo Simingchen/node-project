@@ -18,9 +18,6 @@
     //     res.render('index', { title: 'Express1' });
     // })
 
-
-
-
 var bodyParser = require('body-parser');
 var mongooes = require("mongooes");
 
