@@ -66,9 +66,7 @@
             font-size: 14px;
             line-height: 50px;
         }
-        @Html.Raw(@"
-            @-webkit-keyframes loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}25%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}50%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}75%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}25%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}50%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}75%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
-        ")
+        @-webkit-keyframes loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}25%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}50%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}75%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}25%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}50%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}75%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
         /*样式隐藏广告*/
         #_embed_v3_dc,iframes,iframe{
             display:none!important;
@@ -94,7 +92,7 @@
         win.addEventListener('resize', change, false);
     })(window, document);
 </script>
-<script src="/static/js/zepto.min.js"></script>
+<!-- <script src="/static/js/zepto.min.js"></script> -->
     <!-- built files will be auto injected -->
 </body>
 <script>
@@ -102,14 +100,14 @@
     var ua = window.navigator.userAgent.toLowerCase();
     /micromessenger/.test(ua) && document.write('<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" ><\/script>')
 </script>
-<script async src="/static/js/city-picker.js"></script>
+<!-- <script async src="/static/js/city-picker.js"></script> -->
 <script>
     // 去除运营商http劫持广告
     ;(function () {
         // 是否需要去除广告
         var needClear = false,
         timeout;
-        
+
         // _pushshowjs_属性存在说明被插入了广告
         if (window._pushshowjs_) {
             console.log("adHttp");
