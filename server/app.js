@@ -1,5 +1,5 @@
-// var express = require("express");
-// var app = express();
+var express = require("express");
+var app = express();
 // var path = require('path');
 // var bodyParser = require('body-parser');
 // var index = require('./routes/index');      // 前台路由
