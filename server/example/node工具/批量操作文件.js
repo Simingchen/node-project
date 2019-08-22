@@ -19,7 +19,8 @@ fs.readdir(src, function(err, files) {
         // fs.rename(oldPath, newPath, callback)
         // 下面，我们就可以依葫芦画瓢，确定新旧文件名称：
         //.jsp后缀改为.html
-        var oldPath = src + '/' + filename, newPath = src + '/' + filename.replace(/\.less$/g, ".scss");
+        var oldPath = src + '/' + filename
+        var newPath = src + '/' + filename.replace(/\.less$/g, ".scss");
         // 重命名走起
         fs.rename(oldPath, newPath, function(err) {
             if (!err) {
